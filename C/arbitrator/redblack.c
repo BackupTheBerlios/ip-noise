@@ -1,4 +1,4 @@
-static char rcsid[]="$Id: redblack.c,v 1.1 2001/09/10 08:47:31 shlomif Exp $";
+static char rcsid[]="$Id: redblack.c,v 1.2 2001/10/10 13:19:52 shlomif Exp $";
 
 /*
    Redblack balanced tree algorithm
@@ -24,10 +24,16 @@ static char rcsid[]="$Id: redblack.c,v 1.1 2001/09/10 08:47:31 shlomif Exp $";
 ** exactly the same
 */
 
+#ifndef __KERNEL__
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
+#else
+#include "k_stdlib.h"
+#endif
+
 #include "redblack.h"
+
 
 #define assert(expr)
 
@@ -1005,6 +1011,12 @@ dumptree(struct rbnode *x, int n)
 
 /*
  * $Log: redblack.c,v $
+ * Revision 1.2  2001/10/10 13:19:52  shlomif
+ *
+ *
+ * 1. IFace now listens to a char device.
+ * 2. Various Fixes to get the kernel module to compile.
+ *
  * Revision 1.1  2001/09/10 08:47:31  shlomif
  *
  *
